@@ -41,11 +41,11 @@ const modules = [
   "Pricing and Packaging Your Services", "Automating Your Workflow", "Scaling into an Agency",
 ];
 const bonuses = [
-  ["How To Get Paying Clients Within 30 Days", "₦75,000"], ["100 High-Converting AI Prompts", "₦50,000"],
-  ["Client Proposal Templates", "₦40,000"], ["WhatsApp Outreach Scripts", "₦35,000"],
-  ["Website Pricing Blueprint", "₦45,000"], ["How To Automate Your Website Business", "₦85,000"],
-  ["50 Profitable Website Niches", "₦35,000"], ["Freelancer Starter Toolkit", "₦50,000"],
-  ["AI Content Creation Toolkit", "₦45,000"], ["Business Automation Starter Pack", "₦65,000"],
+  ["How To Get Paying Clients Within 30 Days", "₦7,500"], ["100 High-Converting AI Prompts", "₦10,000"],
+  ["Client Proposal Templates", "₦4,000"], ["WhatsApp Outreach Scripts", "₦10,500"],
+  ["Website Pricing Blueprint", "₦3,000"], ["How To Automate Your Website Business", "₦15,000"],
+  ["50 Profitable Website Niches", "₦20,500"], ["Freelancer Starter Toolkit", "₦5,000"],
+  ["AI Content Creation Toolkit", "₦15,000"], ["Business Automation Starter Pack", "₦11,500"],
 ];
 
 const testimonials: Array<{ name: string; role: string; quote: string; photo: string }> = [
@@ -209,7 +209,7 @@ function Index() {
       <div className="mx-auto max-w-6xl">
         <SectionHeading eyebrow="Included free" title="Enrol Today and Get These Bonuses FREE" />
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{bonuses.map(([name,value],index) => <article key={name} className="glass-panel relative overflow-hidden rounded-2xl p-6"><span className="absolute right-4 top-4 text-5xl font-extrabold text-primary/10">{String(index+1).padStart(2,"0")}</span><Award className="mb-8 text-accent" /><h3 className="max-w-[80%] font-bold">{name}</h3><p className="mt-4 text-sm text-muted-foreground">Value: <b className="text-primary">{value}</b></p></article>)}</div>
-        <div className="mt-8 rounded-2xl border border-primary/25 bg-primary/10 p-6 text-center"><p className="text-sm text-muted-foreground">Total bonus value</p><p className="mt-1 font-display text-4xl font-extrabold text-primary">₦525,000</p><p className="mt-2 text-sm font-bold text-foreground">Yours FREE when you enrol today</p></div>
+        <div className="mt-8 rounded-2xl border border-primary/25 bg-primary/10 p-6 text-center"><p className="text-sm text-muted-foreground">Total bonus value</p><p className="mt-1 font-display text-4xl font-extrabold text-primary">₦102,000</p><p className="mt-2 text-sm font-bold text-foreground">Yours FREE when you enrol today</p></div>
       </div>
     </section>
 
