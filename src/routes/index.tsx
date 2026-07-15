@@ -74,7 +74,6 @@ const faqs: Array<[string, string]> = [
   ["How do I access the course?", "After enrollment, your access details are delivered instantly so you can begin right away."],
 ];
 
-import { useEffect, useState } from "react";
 
 function useCountdown() {
   const DURATION_S = 47 * 60 * 60; // 1 day + 23 hours
