@@ -188,7 +188,7 @@ function Index() {
 
     <section className="px-4 py-20 md:py-28">
       <div className="mx-auto grid max-w-6xl items-center gap-10 md:grid-cols-2">
-        <img src={coursePreviewImg} alt="Preview of websites built during the course" loading="lazy" width={1280} height={900} className="glass-panel w-full rounded-3xl object-cover" />
+        <img src={coursePreviewImg} alt="Preview of websites" loading="lazy" width={1280} height={900} className="glass-panel w-full rounded-3xl object-cover" />
         <div>
           <p className="text-xs font-bold uppercase tracking-[.24em] text-accent">Inside the course</p>
           <h2 className="mt-3 text-3xl font-extrabold md:text-5xl">Ship real, portfolio-ready websites</h2>
