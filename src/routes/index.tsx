@@ -75,7 +75,7 @@ const faqs: Array<[string, string]> = [
 ];
 
 function useCountdown() {
-  const [seconds, setSeconds] = useState(6 * 3600 + 42 * 60 + 18);
+  const [seconds, setSeconds] = useState(10 * 3600 + 42 * 60 + 18);
   useEffect(() => { const timer = window.setInterval(() => setSeconds((v) => v > 0 ? v - 1 : 0), 1000); return () => window.clearInterval(timer); }, []);
   return { h: String(Math.floor(seconds / 3600)).padStart(2, "0"), m: String(Math.floor((seconds % 3600) / 60)).padStart(2, "0"), s: String(seconds % 60).padStart(2, "0") };
 }
