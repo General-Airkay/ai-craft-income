@@ -74,11 +74,59 @@ const faqs: Array<[string, string]> = [
   ["How do I access the course?", "After enrollment, your access details are delivered instantly so you can begin right away."],
 ];
 
+import { useEffect, useState } from "react";
+
 function useCountdown() {
-  const [seconds, setSeconds] = useState(10 * 3600 + 42 * 60 + 18);
-  useEffect(() => { const timer = window.setInterval(() => setSeconds((v) => v > 0 ? v - 1 : 0), 1000); return () => window.clearInterval(timer); }, []);
-  return { h: String(Math.floor(seconds / 3600)).padStart(2, "0"), m: String(Math.floor((seconds % 3600) / 60)).padStart(2, "0"), s: String(seconds % 60).padStart(2, "0") };
+  // 1 Day + 23 Hours = 47 hours
+  const DURATION = (1 * 24 + 23) * 60 * 60;
+  const STORAGE_KEY = "offerDeadline";
+
+  const getRemainingSeconds = () => {
+    const now = Date.now();
+
+    let deadline = localStorage.getItem(STORAGE_KEY);
+
+    // First visit: create a deadline
+    if (!deadline) {
+      deadline = now + DURATION * 1000;
+      localStorage.setItem(STORAGE_KEY, deadline.toString());
+    }
+
+    deadline = Number(deadline);
+
+    // If the timer has expired, start a fresh 47-hour countdown
+    if (now >= deadline) {
+      deadline = now + DURATION * 1000;
+      localStorage.setItem(STORAGE_KEY, deadline.toString());
+    }
+
+    return Math.max(0, Math.floor((deadline - now) / 1000));
+  };
+
+  const [seconds, setSeconds] = useState(getRemainingSeconds);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setSeconds(getRemainingSeconds());
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  const days = Math.floor(seconds / 86400);
+  const hours = Math.floor((seconds % 86400) / 3600);
+  const minutes = Math.floor((seconds % 3600) / 60);
+  const secs = seconds % 60;
+
+  return {
+    d: String(days).padStart(2, "0"),
+    h: String(hours).padStart(2, "0"),
+    m: String(minutes).padStart(2, "0"),
+    s: String(secs).padStart(2, "0"),
+  };
 }
+
+export default useCountdown;
 
 function Countdown({ compact = false }: { compact?: boolean }) {
   const time = useCountdown();
