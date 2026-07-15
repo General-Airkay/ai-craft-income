@@ -77,27 +77,16 @@ const faqs: Array<[string, string]> = [
 import { useEffect, useState } from "react";
 
 function useCountdown() {
-  // 1 Day + 23 Hours = 47 hours
-  const DURATION = (1 * 24 + 23) * 60 * 60;
+  const DURATION_S = 47 * 60 * 60; // 1 day + 23 hours
   const STORAGE_KEY = "offerDeadline";
 
   const getRemainingSeconds = () => {
     const now = Date.now();
+    let deadline = Number(localStorage.getItem(STORAGE_KEY)) || 0;
 
-    let deadline = localStorage.getItem(STORAGE_KEY);
-
-    // First visit: create a deadline
-    if (!deadline) {
-      deadline = now + DURATION * 1000;
-      localStorage.setItem(STORAGE_KEY, deadline.toString());
-    }
-
-    deadline = Number(deadline);
-
-    // If the timer has expired, start a fresh 47-hour countdown
-    if (now >= deadline) {
-      deadline = now + DURATION * 1000;
-      localStorage.setItem(STORAGE_KEY, deadline.toString());
+    if (!deadline || now >= deadline) {
+      deadline = now + DURATION_S * 1000;
+      localStorage.setItem(STORAGE_KEY, String(deadline));
     }
 
     return Math.max(0, Math.floor((deadline - now) / 1000));
@@ -106,33 +95,44 @@ function useCountdown() {
   const [seconds, setSeconds] = useState(getRemainingSeconds);
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setSeconds(getRemainingSeconds());
-    }, 1000);
-
-    return () => clearInterval(timer);
+    const id = setInterval(() => setSeconds(getRemainingSeconds()), 1000);
+    return () => clearInterval(id);
   }, []);
 
-  const days = Math.floor(seconds / 86400);
-  const hours = Math.floor((seconds % 86400) / 3600);
-  const minutes = Math.floor((seconds % 3600) / 60);
-  const secs = seconds % 60;
-
   return {
-    d: String(days).padStart(2, "0"),
-    h: String(hours).padStart(2, "0"),
-    m: String(minutes).padStart(2, "0"),
-    s: String(secs).padStart(2, "0"),
+    d: String(Math.floor(seconds / 86400)).padStart(2, "0"),
+    h: String(Math.floor((seconds % 86400) / 3600)).padStart(2, "0"),
+    m: String(Math.floor((seconds % 3600) / 60)).padStart(2, "0"),
+    s: String(seconds % 60).padStart(2, "0"),
   };
 }
 
-export default useCountdown;
-
 function Countdown({ compact = false }: { compact?: boolean }) {
-  const time = useCountdown();
-  return <div className="flex items-center justify-center gap-2" aria-label={`${time.h}h ${time.m}m ${time.s}s remaining`}>
-    {Object.entries(time).map(([label, value]) => <div key={label} className={`rounded-lg border border-primary/25 bg-surface-deep text-center ${compact ? "min-w-12 px-2 py-1" : "min-w-18 px-3 py-3"}`}><b className={`${compact ? "text-lg" : "text-2xl md:text-3xl"} font-display text-primary`}>{value}</b><span className="ml-1 text-[9px] uppercase text-muted-foreground">{label}</span></div>)}
-  </div>;
+  const { d, h, m, s } = useCountdown();
+  const units = [
+    ["d", d], ["h", h], ["m", m], ["s", s],
+  ] as const;
+
+  return (
+    <div
+      className="flex items-center justify-center gap-2"
+      aria-label={`${d}d ${h}h ${m}m ${s}s remaining`}
+    >
+      {units.map(([label, value]) => (
+        <div
+          key={label}
+          className={`rounded-lg border border-primary/25 bg-surface-deep text-center ${
+            compact ? "min-w-12 px-2 py-1" : "min-w-18 px-3 py-3"
+          }`}
+        >
+          <b className={`${compact ? "text-lg" : "text-2xl md:text-3xl"} font-display text-primary`}>
+            {value}
+          </b>
+          <span className="ml-1 text-[9px] uppercase text-muted-foreground">{label}</span>
+        </div>
+      ))}
+    </div>
+  );
 }
 
 function SectionHeading({ eyebrow, title, copy }: { eyebrow: string; title: string; copy?: string }) {
