@@ -50,15 +50,15 @@ const bonuses = [
 
 const testimonials: Array<{ name: string; role: string; quote: string; photo: string }> = [
   { name: "Christina Puder", role: "Founder · Madrid, Spain", photo: t1,
-    quote: "I discovered Lovable and quickly created a professional landing page. A $20/month AI subscription effectively became my entire web development team—I launch and continuously improve my business site without hiring developers." },
+    quote: "I discovered Lovable and quickly created a professional landing page..... AI subscription effectively became my entire web development team—I launch and continuously improve my business site without hiring developers." },
   { name: "Nick Boas", role: "Small Business Owner", photo: t2,
     quote: "I had my website up and running in literally five minutes. Three weeks in I've already gotten two solid client leads that came straight from the site." },
-  { name: "Steve S.", role: "Chief Financial Officer", photo: t3,
-    quote: "It's easy to use. You get to see a preview before paying, and the look and feel of the site is modern and user-friendly." },
+  { name: "Amarachi Iwueze.", role: "Designer, Lagos", photo: t3,
+    quote: "During the Figma Hackathon, I vibe coded and built my idea using Lovable AI. It was fast.." },
   { name: "Thomas Hennessy", role: "Consultant", photo: t4,
     quote: "I'd been putting off getting a real website for years. AI let me build one myself instead of paying an agency thousands of dollars." },
-  { name: "Skipdwait", role: "Agency Operator", photo: t5,
-    quote: "The chat-based build is the part I keep coming back to. Sites come out clean and our clients are happy with what we deliver." },
+  { name: "Sampson Ovuoba", role: "Founder - Nigeria", photo: t5,
+    quote: "AI has made website creation more visual and easier, helping me build an AI-assisted web design tool, now used internationally." },
   { name: "SEO Agency Owner", role: "New Jersey, USA", photo: t6,
     quote: "I built two client websites almost entirely with AI. We now get phone calls every day and rank #1 in several local search areas—still doing some human editing, but the leverage is huge." },
 ];
