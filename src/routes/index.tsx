@@ -389,23 +389,25 @@ function Index() {
     <div className="fixed inset-x-0 bottom-0 z-50 border-t border-primary/25 bg-surface-deep/95 p-3 backdrop-blur-xl md:hidden">
   <Button asChild variant="hero" size="xl" className="w-full">
     <a
-      href={CHECKOUT_URL}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="flex items-center justify-center gap-2"
-    >
-      <span>GET ACCESS —</span>
+  href={CHECKOUT_URL}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="flex items-center justify-center gap-2 text-base font-extrabold tracking-wide"
+>
+  <span className="text-white">
+    GET ACCESS —
+  </span>
 
-      <span className="text-white/70 line-through text-sm">
-        ₦167,000
-      </span>
+  <span className="text-white line-through font-extrabold text-base">
+    ₦167,000
+  </span>
 
-      <span className="font-bold text-yellow-300">
-        ₦5,000
-      </span>
+  <span className="font-extrabold text-lg text-yellow-300 drop-shadow-sm">
+    ₦5,000
+  </span>
 
-      <ArrowRight className="ml-1 h-4 w-4" />
-    </a>
+  <ArrowRight className="ml-1 h-5 w-5 stroke-[3]" />
+</a>
   </Button>
 </div>
   </main>;
