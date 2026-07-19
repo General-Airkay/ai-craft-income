@@ -319,9 +319,9 @@ function Index() {
       <div className="mx-auto max-w-4xl">
         <SectionHeading eyebrow="The complete offer" title="Everything You Get Today" />
         <div className="glass-panel overflow-hidden rounded-3xl">
-          <div className="border-b border-border p-6 md:p-9">{[["Complete AI Website Income Accelerator","₦250,000"],...bonuses].map(([name,value]) => <div key={name} className="flex items-center justify-between gap-4 border-b border-border py-3 last:border-0"><span className="flex items-center gap-2 text-sm"><Check size={16} className="shrink-0 text-primary" />{name}</span><b className="shrink-0 text-sm text-muted-foreground">{value}</b></div>)}</div>
+          <div className="border-b border-border p-6 md:p-9">{[["Complete AI Website Income Accelerator","₦65,000"],...bonuses].map(([name,value]) => <div key={name} className="flex items-center justify-between gap-4 border-b border-border py-3 last:border-0"><span className="flex items-center gap-2 text-sm"><Check size={16} className="shrink-0 text-primary" />{name}</span><b className="shrink-0 text-sm text-muted-foreground">{value}</b></div>)}</div>
           <div className="bg-primary/10 p-7 text-center md:p-12">
-            <p className="text-sm uppercase tracking-widest text-muted-foreground">Total value <s>₦775,000</s></p>
+            <p className="text-sm uppercase tracking-widest text-muted-foreground">Total value <s>₦167,000</s></p>
             <p className="mt-5 text-sm font-bold text-accent">TODAY'S DISCOUNTED PRICE</p>
             <p className="my-2 font-display text-6xl font-extrabold tracking-tight text-primary md:text-8xl">{PRICE}</p>
             <p className="mb-7 text-sm text-muted-foreground">One payment · Lifetime access</p>
@@ -387,9 +387,26 @@ function Index() {
 
     {/* Mobile sticky CTA */}
     <div className="fixed inset-x-0 bottom-0 z-50 border-t border-primary/25 bg-surface-deep/95 p-3 backdrop-blur-xl md:hidden">
-      <Button asChild variant="hero" size="xl" className="w-full">
-        <a href={CHECKOUT_URL} target="_blank" rel="noopener noreferrer">GET INSTANT ACCESS — {PRICE} <ArrowRight /></a>
-      </Button>
-    </div>
+  <Button asChild variant="hero" size="xl" className="w-full">
+    <a
+      href={CHECKOUT_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="flex items-center justify-center gap-2"
+    >
+      <span>GET INSTANT ACCESS —</span>
+
+      <span className="text-white/70 line-through text-sm">
+        ₦167,000
+      </span>
+
+      <span className="font-bold text-yellow-300">
+        ₦5,000
+      </span>
+
+      <ArrowRight className="ml-1 h-4 w-4" />
+    </a>
+  </Button>
+</div>
   </main>;
 }
