@@ -394,7 +394,7 @@ function Index() {
       rel="noopener noreferrer"
       className="flex items-center justify-center gap-2"
     >
-      <span>GET INSTANT ACCESS —</span>
+      <span>GET ACCESS —</span>
 
       <span className="text-white/70 line-through text-sm">
         ₦167,000
